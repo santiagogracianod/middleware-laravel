@@ -17,8 +17,14 @@ class ExampleController extends Controller
     {
         return response()->json('hello word', 200);
     }
+
     public function noAcces(): JsonResponse
     {
         return response()->json('no acces', 200);
+    }
+
+    public function noAdmin(): JsonResponse
+    {
+        return response()->json('no admin middleware', 200);
     }
 }
