@@ -5,9 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\Middleware;
 
 class ExampleController extends Controller
 {
+
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('example', only: ['indexApi'])
+        ];
+    }
+
     public function index(): View
     {
         return view('welcome');
@@ -20,7 +29,7 @@ class ExampleController extends Controller
 
     public function noAcces(): JsonResponse
     {
-        return response()->json('no acces', 200);
+        return response()->json('no access', 200);
     }
 
     public function noAdmin(): JsonResponse
